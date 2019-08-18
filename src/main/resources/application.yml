@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  #加入/demo前缀
+  context-path: /api
+
+#DataSource
+#数据库驱动
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  #数据库链接
+  url: jdbc:mysql://localhost:3306/xdhc304?useUnicode=true&characterEncoding=utf8&useSSL=false
+  #数据库用户名
+  username: root
+  #数据库密码
+  password: root
+
+#Mybatis
+mybatis_config_file: mybatis-config.xml
+mapper_path: /mapper/**.xml
+type_alias_package: com.imooc.demo.entity
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: pass1234
+  pool:
+    max-active: 100
+    max-idle: 10
+    max-wait: 100000
+  timeout: 0
