@@ -40,7 +40,7 @@ public interface AreaService {
 	/**
 	 * 删除区域信息
 	 * 
-	 * @param area
+	 * @param areaId
 	 * @return
 	 */
 	boolean deleteArea(int areaId);

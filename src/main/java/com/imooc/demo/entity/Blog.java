@@ -7,11 +7,15 @@ import java.util.Date;
  * @author xdhc304
  *
  */
-public class Area {
+public class Blog {
 	// 主键ID
-	private Integer areaId;
+	private Integer blogId;
 	// 名称
-	private String areaName;
+	private String blogTitle;
+	// Url
+	private String blogUrl;
+	// 平台
+	private String blogPlatform;
 	// 权重，越大越排前显示
 	private Integer priority;
 	// 创建时间
@@ -19,20 +23,36 @@ public class Area {
 	// 更新时
 	private Date lastEditTime;
 
-	public Integer getAreaId() {
-		return areaId;
+	public Integer getBlogId() {
+		return blogId;
 	}
 
-	public void setAreaId(Integer areaId) {
-		this.areaId = areaId;
+	public void setBlogId(Integer blogId) {
+		this.blogId = blogId;
 	}
 
-	public String getAreaName() {
-		return areaName;
+	public String getBlogTitle() {
+		return blogTitle;
 	}
 
-	public void setAreaName(String areaName) {
-		this.areaName = areaName;
+	public void setBlogTitle(String blogTitle) {
+		this.blogTitle = blogTitle;
+	}
+
+	public String getBlogUrl() {
+		return blogUrl;
+	}
+
+	public void setBlogUrl(String blogUrl) {
+		this.blogUrl = blogUrl;
+	}
+
+	public String getBlogPlatform() {
+		return blogPlatform;
+	}
+
+	public void setBlogPlatform(String blogPlatform) {
+		this.blogPlatform = blogPlatform;
 	}
 
 	public Integer getPriority() {
@@ -58,5 +78,4 @@ public class Area {
 	public void setLastEditTime(Date lastEditTime) {
 		this.lastEditTime = lastEditTime;
 	}
-
 }
