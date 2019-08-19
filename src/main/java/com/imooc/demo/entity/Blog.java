@@ -10,6 +10,8 @@ import java.util.Date;
 public class Blog {
 	// 主键ID
 	private Integer blogId;
+	// 作者
+	private String blogAuthor;
 	// 名称
 	private String blogTitle;
 	// Url
@@ -37,6 +39,14 @@ public class Blog {
 
 	public void setBlogTitle(String blogTitle) {
 		this.blogTitle = blogTitle;
+	}
+
+	public String getBlogAuthor() {
+		return blogAuthor;
+	}
+
+	public void setBlogAuthor(String blogAuthor) {
+		this.blogAuthor = blogAuthor;
 	}
 
 	public String getBlogUrl() {

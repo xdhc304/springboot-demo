@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -24,6 +25,7 @@ public class AreaDaoTest {
 	private AreaDao areaDao;
 
 	@Test
+	@Ignore
 	public void testAQueryArea() {
 		List<Area> areaList = areaDao.queryArea();
 		// 验证预期值和实际值是否相符
@@ -31,6 +33,7 @@ public class AreaDaoTest {
 	}
 
 	@Test
+	@Ignore
 	public void testBInsertArea() {
 		//创建一个区域对象
 		Area area = new Area();
@@ -47,12 +50,14 @@ public class AreaDaoTest {
 	}
 
 	@Test
+	@Ignore
 	public void testCQueryAreaById() {
 		Area area = areaDao.queryAreaById(2);
 		assertEquals("北苑", area.getAreaName());
 	}
 
 	@Test
+	@Ignore
 	public void testDUpateArea() {
 		List<Area> areaList = areaDao.queryArea();
 		for (Area area : areaList) {
@@ -67,6 +72,7 @@ public class AreaDaoTest {
 	}
 
 	@Test
+	@Ignore
 	public void testEDeleteArea() {
 		List<Area> areaList = areaDao.queryArea();
 		for (Area area : areaList) {
