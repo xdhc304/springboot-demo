@@ -8,14 +8,14 @@ public interface BlogDao {
 	/**
 	 * 列出区域列表
 	 * 
-	 * @return areaList
+	 * @return blogList
 	 */
 	List<Blog> queryBlog();
 
 	/**
 	 * 根据Id列出具体区域
 	 * 
-	 * @return area
+	 * @return blog
 	 */
 	Blog queryBlogById(int blogId);
 

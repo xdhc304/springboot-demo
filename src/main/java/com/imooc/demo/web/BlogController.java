@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.imooc.demo.entity.Blog;
 import com.imooc.demo.service.BlogService;
 import com.imooc.demo.entity.Result;
-import com.imooc.demo.util.RedisConfig;
+import com.imooc.demo.util.RedisUtil;
 import com.imooc.demo.util.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ import java.util.Map;
 @RequestMapping("/blog")
 public class BlogController {
 	@Autowired
-	private RedisConfig redisConfig;
+	private RedisUtil redisUtil;
 
 	@Autowired
 	private BlogService blogService;
@@ -42,19 +42,21 @@ public class BlogController {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		List<Blog> list = new ArrayList<Blog>();
 		try {
-			logger.info("===== blogList: " + redisConfig.get("blogList", List.class) + " =====");
+			logger.info("===== blogList: " + redisUtil.get("blogList", List.class) + " =====");
 		} catch(Exception e) {
 			logger.error("error", e);
 		}
 
-		List blogList = redisConfig.get("blogList", List.class);
-		if (null != blogList) {
+		Object blogObject = redisUtil.get("blogObject", Object.class);
+		logger.info("===== " + blogObject + " =====");
+		if (null != blogObject) {
 			logger.info("===== blogList get from redis =====");
+//			modelMap.put("blogList", blogList);
 		} else {
 			// 获取区域列表
 			list = blogService.getBlogList();
 			modelMap.put("blogList", list);
-			redisConfig.set("blogList", modelMap);
+			redisUtil.set("blogList", list);
 			logger.info("===== blogList get from MySQL =====");
 		}
 		return ResultUtil.success(modelMap);

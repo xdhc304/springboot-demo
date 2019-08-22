@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class RedisConfig {
+public class RedisUtil {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
@@ -55,8 +55,8 @@ public class RedisConfig {
 
     /**
      *
-     * @param Every T values
-     * @param T 任意类型
+     * @param 'Every' T values
+     * @param 'T'任意类型
      * @return String
      */
     private <T> String beanToString(T value) {
