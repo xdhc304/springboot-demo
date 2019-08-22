@@ -25,8 +25,11 @@ import java.util.Map;
 @RequestMapping("/blog")
 public class BlogController {
 	@Autowired
-	private BlogService blogService;
 	private RedisConfig redisConfig;
+
+	@Autowired
+	private BlogService blogService;
+
 	private static final Logger logger  =  LoggerFactory.getLogger(BlogController.class);
 
 	/**
@@ -39,24 +42,21 @@ public class BlogController {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		List<Blog> list = new ArrayList<Blog>();
 		try {
-			logger.info("redisConfig" + redisConfig.get("blogList", List.class));
+			logger.info("===== blogList: " + redisConfig.get("blogList", List.class) + " =====");
 		} catch(Exception e) {
 			logger.error("error", e);
 		}
 
-//		List<Blog> blogList = redisConfig.get("blogList", List.class);
-//		System.out.println("blogList" + blogList);
-//		if (null != blogList) {
-//			list = blogList;
-//			modelMap.put("blogList", list);
-//			System.out.println("blogList get from redis");
-//		} else {
+		List blogList = redisConfig.get("blogList", List.class);
+		if (null != blogList) {
+			logger.info("===== blogList get from redis =====");
+		} else {
 			// 获取区域列表
 			list = blogService.getBlogList();
 			modelMap.put("blogList", list);
-//			redisConfig.set("blogList", list);
-			logger.info("blogList get from MySQL");
-//		}
+			redisConfig.set("blogList", modelMap);
+			logger.info("===== blogList get from MySQL =====");
+		}
 		return ResultUtil.success(modelMap);
 	}
 
