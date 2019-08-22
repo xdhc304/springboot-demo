@@ -47,7 +47,7 @@ public class BlogController {
 			logger.error("error", e);
 		}
 
-		Object blogObject = redisUtil.get("blogObject", Object.class);
+		Object blogObject = redisUtil.get("blogList", Object.class);
 		logger.info("===== " + blogObject + " =====");
 		if (null != blogObject) {
 			logger.info("===== blogList get from redis =====");
