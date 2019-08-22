@@ -11,14 +11,14 @@ public class RedisConfig {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
-    public <T> boolean set(String key ,T value){
+    public <T> boolean set(String key, T value){
         try {
             //任意类型转换成String
             String val = beanToString(value);
-            if(val==null||val.length()<=0){
+            if(val == null || val.length() <= 0){
                 return false;
             }
-            stringRedisTemplate.opsForValue().set(key,val);
+            stringRedisTemplate.opsForValue().set(key, val);
             return true;
         }catch (Exception e){
             return false;
@@ -68,7 +68,7 @@ public class RedisConfig {
 
         if(clazz == int.class || clazz == Integer.class) {
             return "" + value;
-        } else if (clazz == long.class || clazz==Long.class) {
+        } else if (clazz == long.class || clazz == Long.class) {
             return "" + value;
         } else if (clazz == String.class) {
             return (String)value;
