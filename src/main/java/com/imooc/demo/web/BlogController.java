@@ -7,6 +7,8 @@ import com.imooc.demo.service.BlogService;
 import com.imooc.demo.entity.Result;
 import com.imooc.demo.util.RedisConfig;
 import com.imooc.demo.util.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,7 @@ public class BlogController {
 	@Autowired
 	private BlogService blogService;
 	private RedisConfig redisConfig;
+	private static final Logger logger  =  LoggerFactory.getLogger(BlogController.class);
 
 	/**
 	 * 获取所有的区域信息
@@ -35,7 +38,12 @@ public class BlogController {
 	private Result<Map<String, Object>> listBlog() {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		List<Blog> list = new ArrayList<Blog>();
-//		System.out.println("redisConfig" + redisConfig.get("blogList", List.class));
+		try {
+			logger.info("redisConfig" + redisConfig.get("blogList", List.class));
+		} catch(Exception e) {
+			logger.error("error", e);
+		}
+
 //		List<Blog> blogList = redisConfig.get("blogList", List.class);
 //		System.out.println("blogList" + blogList);
 //		if (null != blogList) {
@@ -47,7 +55,7 @@ public class BlogController {
 			list = blogService.getBlogList();
 			modelMap.put("blogList", list);
 //			redisConfig.set("blogList", list);
-			System.out.println("blogList get from MySQL");
+			logger.info("blogList get from MySQL");
 //		}
 		return ResultUtil.success(modelMap);
 	}
