@@ -1,4 +1,4 @@
-package com.imooc.demo.util;
+package com.imooc.demo.entity;
 
 public class Result<T> {
     /** 错误码 */

@@ -1,5 +1,7 @@
 package com.imooc.demo.util;
 
+import com.imooc.demo.entity.Result;
+
 public class ResultUtil {
 
     public static Result success(Object object) {
