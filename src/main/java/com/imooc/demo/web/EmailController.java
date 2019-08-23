@@ -45,13 +45,12 @@ public class EmailController {
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setFrom("1*156*156*6@163.com");
             helper.setTo("857446812@qq.com");
-//            helper.setTo("1171286725@qq.com");
             helper.setSubject("标题：电子发票");
 
             StringBuffer sb = new StringBuffer();
             sb.append("<h1>电子发票</h1>")
-                .append("<p style='color:#F00'>已到</p>");
-//                .append("<p style='text-align:right'>右对齐</p>");
+                .append("<p style='color:#F00'>已到</p>")
+                .append("<p style='text-align:right'>spring boot发送</p>");
             helper.setText(sb.toString(), true);
 //            FileSystemResource fileSystemResource = new FileSystemResource(new File("D:\76678.pdf"));
 //            helper.addAttachment("电子发票", fileSystemResource);
