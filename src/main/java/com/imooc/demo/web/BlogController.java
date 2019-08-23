@@ -35,11 +35,11 @@ public class BlogController {
 	private static final Logger logger  =  LoggerFactory.getLogger(BlogController.class);
 
 	/**
-	 * 获取所有的区域信息
+	 * 获取所有的博客信息
 	 * 
 	 * @return
 	 */
-	@ApiOperation(value = "blogList")
+	@ApiOperation(value = "listBlog")
 	@RequestMapping(value = "/listblog", method = RequestMethod.GET)
 	private Result<Map<String, Object>> listBlog() {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
@@ -56,7 +56,7 @@ public class BlogController {
 			logger.info("===== blogList get from redis =====");
 //			modelMap.put("blogList", blogList);
 		} else {
-			// 获取区域列表
+			// 获取博客列表
 			list = blogService.getBlogList();
 			modelMap.put("blogList", list);
 			redisUtil.set("blogList", list);
@@ -65,7 +65,8 @@ public class BlogController {
 		return ResultUtil.success(modelMap);
 	}
 
-	@RequestMapping("/page")
+	@ApiOperation(value = "listBlogByPage")
+	@RequestMapping("/listblogbypage")
 	public Result<PageInfo<Blog>> listBlogByPage(@RequestParam(defaultValue = "1",value = "currentPage") Integer pageNum,
 										 @RequestParam(defaultValue = "10",value = "pageSize") Integer pageSize){
 
@@ -76,21 +77,33 @@ public class BlogController {
 	}
 
 	/**
-	 * 通过区域Id获取区域信息
+	 * 通过博客Id获取博客信息
 	 * 
 	 * @return
 	 */
 	@RequestMapping(value = "/getblogbyid", method = RequestMethod.GET)
 	private Map<String, Object> getBlogById(Integer blogId) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		// 获取区域信息
+		// 获取博客信息
 		Blog blog = blogService.getBlogById(blogId);
 		modelMap.put("blog", blog);
 		return modelMap;
 	}
 
 	/**
-	 * 添加区域信息
+	 * 通过博客Id获取博客信息
+	 *
+	 * @return
+	 */
+	@RequestMapping(value = "/getblogbyid2/{blogId}", method = RequestMethod.GET)
+	private Result<Map<String, Object>> getBlogById2(@PathVariable Integer blogId) {
+		// 获取博客信息
+		Blog blog = blogService.getBlogById(blogId);
+		return ResultUtil.success(blog);
+	}
+
+	/**
+	 * 添加博客信息
 	 * 
 	 * @param blog
 	 * @return
@@ -102,13 +115,13 @@ public class BlogController {
 	private Map<String, Object> addBlog(@RequestBody Blog blog)
 			throws JsonParseException, JsonMappingException, IOException {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		// 添加区域信息
+		// 添加博客信息
 		modelMap.put("success", blogService.addBlog(blog));
 		return modelMap;
 	}
 
 	/**
-	 * 修改区域信息，主要修改名字
+	 * 修改博客信息，主要修改名字
 	 * 
 	 * @param blog
 	 * @return
@@ -120,7 +133,7 @@ public class BlogController {
 	private Map<String, Object> modifyBlog(@RequestBody Blog blog)
 			throws JsonParseException, JsonMappingException, IOException {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		// 修改区域信息
+		// 修改博客信息
 		modelMap.put("success", blogService.modifyBlog(blog));
 		return modelMap;
 	}
@@ -128,7 +141,7 @@ public class BlogController {
 	@RequestMapping(value = "/removeblog", method = RequestMethod.GET)
 	private Map<String, Object> removeBlog(Integer blogId) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		// 修改区域信息
+		// 修改博客信息
 		modelMap.put("success", blogService.deleteBlog(blogId));
 		return modelMap;
 	}
