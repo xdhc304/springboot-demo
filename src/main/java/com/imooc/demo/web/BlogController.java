@@ -7,6 +7,8 @@ import com.imooc.demo.service.BlogService;
 import com.imooc.demo.entity.Result;
 import com.imooc.demo.util.RedisUtil;
 import com.imooc.demo.util.ResultUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Api(value = "BlogController ")
 @RestController
 @RequestMapping("/blog")
 public class BlogController {
@@ -37,6 +40,7 @@ public class BlogController {
 	 * 
 	 * @return
 	 */
+	@ApiOperation(value = "blogList")
 	@RequestMapping(value = "/listblog", method = RequestMethod.GET)
 	private Result<Map<String, Object>> listBlog() {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
