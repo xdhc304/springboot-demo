@@ -22,6 +22,21 @@ type_alias_package: com.imooc.demo.entity
 spring:
   cache:
     type: redis
+  mail:
+    host: smtp.163.com
+    username: 1*156*156*6@163.com
+    password: abcd1234
+    port: 25
+    protocol: smtp
+    default-encoding: UTF-8
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          ssl:
+#            enable: true
+  #是否用启用加密传送的协议验证项
+  #注意：在spring.mail.password处的值是需要在邮箱设置里面生成的授权码，这个不是真实的密码。
 
 redis:
   database: 0
