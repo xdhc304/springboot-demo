@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Api(value = "BlogController ")
+@Api(value = "BlogController")
 @RestController
 @RequestMapping("/blog")
 public class BlogController {
