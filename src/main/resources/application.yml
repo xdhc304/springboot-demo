@@ -34,3 +34,9 @@ redis:
 #    max-idle: 10
 #    min-idle: 0
   timeout: 3
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

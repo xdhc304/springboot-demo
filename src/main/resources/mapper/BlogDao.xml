@@ -10,6 +10,13 @@
 		ORDER BY priority
 		DESC
 	</select>
+	<select id="queryBlogByPage" resultType="com.imooc.demo.entity.Blog">
+		SELECT blog_id, blog_title, blog_author, blog_url, blog_platform,
+		priority, create_time, last_edit_time
+		FROM tb_blog
+		ORDER BY priority
+		DESC
+	</select>
 	<select id="queryBlogById" resultType="com.imooc.demo.entity.Blog">
 		SELECT blog_id, blog_title, blog_author, blog_url, blog_platform,
 		priority, create_time, last_edit_time

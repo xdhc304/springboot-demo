@@ -1,5 +1,6 @@
 package com.imooc.demo.service;
 
+import com.github.pagehelper.Page;
 import com.imooc.demo.entity.Blog;
 
 import java.util.List;
@@ -7,14 +8,21 @@ import java.util.List;
 public interface BlogService {
 
 	/**
-	 * 获取区域列表
+	 * 获取博客列表
 	 * 
 	 * @return
 	 */
 	List<Blog> getBlogList();
 
+    /**
+     * 分页获取博客列表
+     *
+     * @return
+     */
+    Page<Blog> getBlogListByPage(int pageNum, int pageSize);
+
 	/**
-	 * 通过区域Id获取区域信息
+	 * 通过博客Id获取博客信息
 	 * 
 	 * @param blogId
 	 * @return
@@ -22,7 +30,7 @@ public interface BlogService {
 	Blog getBlogById(int blogId);
 
 	/**
-	 * 增加区域信息
+	 * 增加博客信息
 	 * 
 	 * @param blog
 	 * @return
@@ -30,7 +38,7 @@ public interface BlogService {
 	boolean addBlog(Blog blog);
 
 	/**
-	 * 修改区域信息
+	 * 修改博客信息
 	 * 
 	 * @param blog
 	 * @return
@@ -38,7 +46,7 @@ public interface BlogService {
 	boolean modifyBlog(Blog blog);
 
 	/**
-	 * 删除区域信息
+	 * 删除博客信息
 	 * 
 	 * @param blogId
 	 * @return

@@ -1,5 +1,7 @@
 package com.imooc.demo.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.imooc.demo.dao.BlogDao;
 import com.imooc.demo.entity.Blog;
 import com.imooc.demo.service.BlogService;
@@ -19,6 +21,13 @@ public class BlogServiceImpl implements BlogService {
 	public List<Blog> getBlogList() {
 		// 返回所有的区域信息
 		return blogDao.queryBlog();
+	}
+
+	@Override
+	public Page<Blog> getBlogListByPage(int pageNum, int pageSize) {
+		//用插件进行分页
+		PageHelper.startPage(pageNum, pageSize);
+		return blogDao.queryBlogByPage();
 	}
 
 	@Override

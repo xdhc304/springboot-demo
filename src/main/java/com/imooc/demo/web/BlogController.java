@@ -2,7 +2,9 @@ package com.imooc.demo.web;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.github.pagehelper.Page;
 import com.imooc.demo.entity.Blog;
+import com.imooc.demo.entity.PageInfo;
 import com.imooc.demo.service.BlogService;
 import com.imooc.demo.entity.Result;
 import com.imooc.demo.util.RedisUtil;
@@ -12,10 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,6 +63,16 @@ public class BlogController {
 			logger.info("===== blogList get from MySQL =====");
 		}
 		return ResultUtil.success(modelMap);
+	}
+
+	@RequestMapping("/page")
+	public Result<PageInfo<Blog>> listBlogByPage(@RequestParam(defaultValue = "1",value = "currentPage") Integer pageNum,
+										 @RequestParam(defaultValue = "10",value = "pageSize") Integer pageSize){
+
+		Page<Blog> articles = blogService.getBlogListByPage(pageNum, pageSize);
+		// 需要把Page包装成PageInfo对象才能序列化。该插件也默认实现了一个PageInfo
+		PageInfo<Blog> pageInfo = new PageInfo<>(articles);
+		return ResultUtil.success(pageInfo);
 	}
 
 	/**
