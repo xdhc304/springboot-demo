@@ -20,11 +20,11 @@ public class Interceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object object) throws Exception {
 
-        System.out.println("被one拦截，放行...");
+        System.out.println("被Interceptor拦截");
         return true;
 
 		/*if (true) {
-			returnErrorResponse(response, IMoocJSONResult.errorMsg("被one拦截..."));
+			returnErrorResponse(response, IMoocJSONResult.errorMsg("被Interceptor拦截"));
 		}
 
 		return false;*/
