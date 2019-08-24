@@ -20,6 +20,14 @@ mapper_path: /mapper/**.xml
 type_alias_package: com.imooc.demo.entity
 
 spring:
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+#      include:
+#        mapper: /mapper-[\\w-\\.]+jar
+#        pagehelper: /pagehelper-[\\w-\\.]+jar
+#      exclude: static/**, public/**, WEB-INF/**
   cache:
     type: redis
   mail:

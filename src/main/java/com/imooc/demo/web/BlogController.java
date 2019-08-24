@@ -65,7 +65,7 @@ public class BlogController {
 	}
 
 	@ApiOperation(value = "listBlogByPage")
-	@RequestMapping("/listblogbypage")
+	@RequestMapping(value = "/listblogbypage", method = RequestMethod.GET)
 	public Result<PageInfo<Blog>> listBlogByPage(@RequestParam(defaultValue = "1",value = "currentPage") Integer pageNum,
 										 @RequestParam(defaultValue = "10",value = "pageSize") Integer pageSize){
 

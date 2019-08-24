@@ -36,7 +36,7 @@ public class EmailController {
      *
      * @return
      */
-    @ApiOperation(value = "sendemail")
+    @ApiOperation(value = "sendEmail")
     @RequestMapping(value = "/send", method = RequestMethod.GET)
     private Result<Map<String, Object>> sendEmail() {
         MimeMessage message = null;

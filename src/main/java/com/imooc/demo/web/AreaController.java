@@ -20,7 +20,7 @@ import com.imooc.demo.entity.Area;
 import com.imooc.demo.service.AreaService;
 
 @RestController
-@RequestMapping("/superadmin")
+@RequestMapping("/area")
 public class AreaController {
 	@Autowired
 	private AreaService areaService;
