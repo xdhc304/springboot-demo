@@ -1,5 +1,7 @@
 package com.imooc.demo.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 /**
@@ -9,6 +11,7 @@ import java.util.Date;
  */
 public class Blog {
 	// 主键ID
+	@ApiModelProperty(value = "博客id")
 	private Integer blogId;
 	// 作者
 	private String blogAuthor;
