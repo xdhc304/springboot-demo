@@ -50,11 +50,10 @@ public class BlogController {
 			logger.error("error", e);
 		}
 
-		Object blogObject = redisUtil.get("blogList", Object.class);
-		logger.info("===== " + blogObject + " =====");
-		if (null != blogObject) {
+		List blogList = redisUtil.get("blogList", List.class);
+		if (null != blogList) {
 			logger.info("===== blogList get from redis =====");
-//			modelMap.put("blogList", blogList);
+			modelMap.put("blogList", blogList);
 		} else {
 			// 获取博客列表
 			list = blogService.getBlogList();

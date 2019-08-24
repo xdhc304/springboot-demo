@@ -15,12 +15,13 @@ public class RedisUtil {
         try {
             //任意类型转换成String
             String val = beanToString(value);
+            System.out.println("set: " + key + val);
             if(val == null || val.length() <= 0){
                 return false;
             }
             stringRedisTemplate.opsForValue().set(key, val);
             return true;
-        }catch (Exception e){
+        } catch (Exception e){
             return false;
         }
     }
@@ -28,8 +29,10 @@ public class RedisUtil {
     public <T> T get(String key, Class<T> clazz){
         try {
             String value = stringRedisTemplate.opsForValue().get(key);
+            System.out.println("get: " + key + value );
             return stringToBean(value, clazz);
-        }catch (Exception e){
+        } catch (Exception e){
+            System.out.println("get: " + e);
             return null ;
         }
     }
@@ -49,7 +52,7 @@ public class RedisUtil {
         else if(clazz == String.class) {
             return (T)value;
         }else {
-            return JSON.toJavaObject(JSON.parseObject(value), clazz);
+            return JSON.parseObject(value, clazz);
         }
     }
 
