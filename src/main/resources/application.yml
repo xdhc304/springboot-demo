@@ -17,7 +17,7 @@ jdbc:
 #Mybatis
 mybatis_config_file: mybatis-config.xml
 mapper_path: /mapper/**.xml
-type_alias_package: com.imooc.demo.entity
+type_alias_package: com.xdhc.demo.entity
 
 spring:
   devtools:

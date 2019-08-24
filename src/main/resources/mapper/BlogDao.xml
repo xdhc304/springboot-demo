@@ -2,22 +2,22 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.imooc.demo.dao.BlogDao">
-	<select id="queryBlog" resultType="com.imooc.demo.entity.Blog">
+<mapper namespace="com.xdhc.demo.dao.BlogDao">
+	<select id="queryBlog" resultType="com.xdhc.demo.entity.Blog">
 		SELECT blog_id, blog_title, blog_author, blog_url, blog_platform,
 		priority, create_time, last_edit_time
 		FROM tb_blog
 		ORDER BY priority
 		DESC
 	</select>
-	<select id="queryBlogByPage" resultType="com.imooc.demo.entity.Blog">
+	<select id="queryBlogByPage" resultType="com.xdhc.demo.entity.Blog">
 		SELECT blog_id, blog_title, blog_author, blog_url, blog_platform,
 		priority, create_time, last_edit_time
 		FROM tb_blog
 		ORDER BY priority
 		DESC
 	</select>
-	<select id="queryBlogById" resultType="com.imooc.demo.entity.Blog">
+	<select id="queryBlogById" resultType="com.xdhc.demo.entity.Blog">
 		SELECT blog_id, blog_title, blog_author, blog_url, blog_platform,
 		priority, create_time, last_edit_time
 		FROM tb_blog
@@ -25,7 +25,7 @@
 		blog_id=#{blogId}
 	</select>
 	<insert id="insertBlog" useGeneratedKeys="true" keyProperty="blogId"
-		keyColumn="blog_id" parameterType="com.imooc.demo.entity.Blog">
+		keyColumn="blog_id" parameterType="com.xdhc.demo.entity.Blog">
 		INSERT INTO
 		tb_blog(blog_title, blog_author, blog_url, blog_platform, priority,
 		create_time,last_edit_time)
@@ -33,7 +33,7 @@
 		(#{blogTitle},#{blogAuthor},#{blogUrl},#{blogPlatform},#{priority},
 		#{createTime},#{lastEditTime})
 	</insert>
-	<update id="updateBlog" parameterType="com.imooc.demo.entity.Blog">
+	<update id="updateBlog" parameterType="com.xdhc.demo.entity.Blog">
 		update tb_blog
 		<set>
 			<if test="blogTitle != null">blog_name=#{blogTitle},</if>
