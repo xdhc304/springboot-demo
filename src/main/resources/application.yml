@@ -1,7 +1,7 @@
 server:
   port: 8081
   #加入/demo前缀
-  context-path: /api
+#  context-path: /api
 
 #DataSource
 #数据库驱动
@@ -20,6 +20,13 @@ mapper_path: /mapper/**.xml
 type_alias_package: com.xdhc.demo.entity
 
 spring:
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
   devtools:
     restart:
       enabled: true
@@ -30,6 +37,12 @@ spring:
 #      exclude: static/**, public/**, WEB-INF/**
   cache:
     type: redis
+  rabbitmq:
+    addresses: 192.168.11.81:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    connection-timeout: 15000
   mail:
     host: smtp.163.com
     username: 1*156*156*6@163.com

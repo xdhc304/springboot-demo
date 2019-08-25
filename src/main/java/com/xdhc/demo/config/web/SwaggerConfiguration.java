@@ -29,26 +29,26 @@ public class SwaggerConfiguration {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .pathMapping("/")
-                .globalOperationParameters(setHeaderToken())
-                .select() // 选择那些路径和api会生成document
-                .apis(RequestHandlerSelectors.any())// 对所有api进行监控
-                //不显示错误的接口地址
-                .paths(Predicates.not(PathSelectors.regex("/error.*")))//错误路径不监控
-                .paths(PathSelectors.regex("/.*"))// 对根下所有路径进行监控
-                .build();
+            .apiInfo(apiInfo())
+            .pathMapping("/")
+            .globalOperationParameters(setHeaderToken())
+            .select() // 选择那些路径和api会生成document
+            .apis(RequestHandlerSelectors.any())// 对所有api进行监控
+            //不显示错误的接口地址
+            .paths(Predicates.not(PathSelectors.regex("/error.*")))//错误路径不监控
+            .paths(PathSelectors.regex("/.*"))// 对根下所有路径进行监控
+            .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("xdhc304")
-                .contact(new Contact("xdhc304", "", "1171286725@qq.com"))
-                .description("这是SWAGGER_2生成的接口文档")
-                .termsOfServiceUrl("NO terms of service")
-                .license("The Apache License, Version 2.0")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("v1.0")
-                .build();
+            .contact(new Contact("xdhc304", "", "1171286725@qq.com"))
+            .description("这是SWAGGER_2生成的接口文档")
+            .termsOfServiceUrl("NO terms of service")
+            .license("The Apache License, Version 2.0")
+            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+            .version("v1.0")
+            .build();
     }
 
     private List<Parameter> setHeaderToken() {
