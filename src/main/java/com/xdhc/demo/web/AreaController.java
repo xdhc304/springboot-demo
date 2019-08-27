@@ -6,12 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.xdhc.demo.entity.Result;
+import com.xdhc.demo.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -31,13 +31,13 @@ public class AreaController {
      * @return
      */
     @RequestMapping(value = "/listarea", method = RequestMethod.GET)
-    private Map<String, Object> listArea() {
+    private Result<Map<String, Object>> listArea() {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         List<Area> list = new ArrayList<Area>();
         // 获取区域列表
         list = areaService.getAreaList();
         modelMap.put("areaList", list);
-        return modelMap;
+        return ResultUtil.success(modelMap);
     }
 
     /**
@@ -57,8 +57,8 @@ public class AreaController {
     /**
      * 添加区域信息
      *
-     * @param areaStr
-     * @param request
+     * @param 'areaStr'
+     * @param 'request'
      * @return
      * @throws IOException
      * @throws JsonMappingException
@@ -76,8 +76,8 @@ public class AreaController {
     /**
      * 修改区域信息，主要修改名字
      *
-     * @param areaStr
-     * @param request
+     * @param 'areaStr'
+     * @param 'request'
      * @return
      * @throws IOException
      * @throws JsonMappingException

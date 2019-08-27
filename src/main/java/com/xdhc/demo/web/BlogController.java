@@ -96,9 +96,11 @@ public class BlogController {
 	 */
 	@RequestMapping(value = "/getblogbyid/{blogId}", method = RequestMethod.GET)
 	private Result<Map<String, Object>> getBlogById2(@PathVariable Integer blogId) {
+		Map<String, Object> modelMap = new HashMap<String, Object>();
 		// 获取博客信息
 		Blog blog = blogService.getBlogById(blogId);
-		return ResultUtil.success(blog);
+		modelMap.put("blog", blog);
+		return ResultUtil.success(modelMap);
 	}
 
 	/**

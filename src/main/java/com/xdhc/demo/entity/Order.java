@@ -11,13 +11,13 @@ public class Order implements Serializable {
     // 名称
     private String name;
     // 存储消息发送的唯一标识
-    private Integer messageId;
+    private String messageId;
 
     public Order() {
         super();
     }
 
-    public Order(Integer id, String name, Integer messageId) {
+    public Order(Integer id, String name, String messageId) {
         this.id = id;
         this.name = name;
         this.messageId = messageId;
@@ -39,11 +39,11 @@ public class Order implements Serializable {
         this.name = name;
     }
 
-    public Integer getMessageId() {
+    public String getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(Integer messageId) {
+    public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
 }
