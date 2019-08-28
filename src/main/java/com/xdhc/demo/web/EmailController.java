@@ -70,10 +70,10 @@ public class EmailController {
         }
     }
 
-    @RequestMapping(value = "/simple", method = RequestMethod.GET)
-    private Result<Map<String, Object>> simpleMail() {
+    @RequestMapping(value = "/simpleEmail", method = RequestMethod.GET)
+    private Result<Map<String, Object>> simpleEmail() {
         try {
-            mailService.sendSimpleMail("xxx@126.com","SpringBoot Email","这是一封普通的SpringBoot测试邮件");
+            mailService.sendSimpleMail("857446812@qq.com","SpringBoot Email","这是一封普通的SpringBoot测试邮件");
             return ResultUtil.success("邮件发送成功");
         }catch (Exception ex){
             ex.printStackTrace();
@@ -81,19 +81,19 @@ public class EmailController {
         }
     }
 
-    @RequestMapping("/htmlEmail")
+    @RequestMapping(value = "/htmlEmail", method = RequestMethod.GET)
     public Result<Map<String, Object>> htmlEmail(){
         try {
-            mailService.sendHtmlMail("\"xxx@126.com","IJPay让支付触手可及","<body style=\"text-align: center;margin-left: auto;margin-right: auto;\">\n"
-                    + "	<div id=\"welcome\" style=\"text-align: center;position: absolute;\" >\n"
-                    + "		<h3>欢迎使用IJPay -By Javen</h3>\n"
-                    + "		<span>https://github.com/Javen205/IJPay</span>"
-                    + "		<div\n"
-                    + "			style=\"text-align: center; padding: 10px\"><a style=\"text-decoration: none;\" href=\"https://github.com/Javen205/IJPay\" target=\"_bank\" ><strong>IJPay 让支付触手可及,欢迎Start支持项目发展:)</strong></a></div>\n"
-                    + "		<div\n" + "			style=\"text-align: center; padding: 4px\">如果对你有帮助,请任意打赏</div>\n"
-                    + "		<img width=\"180px\" height=\"180px\"\n"
-                    + "			src=\"https://javen205.gitbooks.io/ijpay/content/assets/wxpay.png\">\n"
-                    + "	</div>\n" + "</body>");
+            mailService.sendHtmlMail("\"857446812@qq.com","IJPay让支付触手可及","<body style=\"text-align: center;margin-left: auto;margin-right: auto;\">\n"
+                + "	<div id=\"welcome\" style=\"text-align: center;position: absolute;\" >\n"
+                + "		<h3>欢迎使用IJPay -By Javen</h3>\n"
+                + "		<span>https://github.com/Javen205/IJPay</span>"
+                + "		<div\n"
+                + "			style=\"text-align: center; padding: 10px\"><a style=\"text-decoration: none;\" href=\"https://github.com/Javen205/IJPay\" target=\"_bank\" ><strong>IJPay 让支付触手可及,欢迎Start支持项目发展:)</strong></a></div>\n"
+                + "		<div\n" + "			style=\"text-align: center; padding: 4px\">如果对你有帮助,请任意打赏</div>\n"
+                + "		<img width=\"180px\" height=\"180px\"\n"
+                + "			src=\"https://javen205.gitbooks.io/ijpay/content/assets/wxpay.png\">\n"
+                + "	</div>\n" + "</body>");
             return ResultUtil.success("邮件发送成功");
         } catch (Exception ex){
             ex.printStackTrace();
@@ -101,33 +101,33 @@ public class EmailController {
         }
     }
 
-    @RequestMapping("/attachmentsMail")
+    @RequestMapping(value = "/attachmentsMail", method = RequestMethod.GET)
     public Result<Map<String, Object>> attachmentsMail(){
         try {
             String filePath = "/Users/Javen/Desktop/IJPay.png";
-            mailService.sendAttachmentsMail("xxx@126.com", "这是一封带附件的邮件", "邮件中有附件，请注意查收！", filePath);
+            mailService.sendAttachmentsMail("857446812@qq.com", "这是一封带附件的邮件", "邮件中有附件，请注意查收！", filePath);
             return ResultUtil.success("邮件发送成功");
-        }catch (Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
             return ResultUtil.error("邮件发送失败");
         }
     }
 
-    @RequestMapping("/resourceMail")
+    @RequestMapping(value = "/resourceMail", method = RequestMethod.GET)
     public Result<Map<String, Object>> resourceMail(){
         try {
             String rscId = "IJPay";
             String content = "<html><body>这是有图片的邮件<br/><img src=\'cid:" + rscId + "\' ></body></html>";
             String imgPath = "/Users/Javen/Desktop/IJPay.png";
-            mailService.sendResourceMail("xxx@126.com", "这邮件中含有图片", content, imgPath, rscId);
+            mailService.sendResourceMail("857446812@qq.com", "这邮件中含有图片", content, imgPath, rscId);
             return ResultUtil.success("邮件发送成功");
-        }catch (Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
             return ResultUtil.error("邮件发送失败");
         }
     }
 
-    @RequestMapping("/templateMail")
+    @RequestMapping(value = "/templateMail", method = RequestMethod.GET)
     public Result<Map<String, Object>> templateMail(){
         try {
             Context context = new Context();
@@ -135,9 +135,9 @@ public class EmailController {
             context.setVariable("author", "Javen");
             context.setVariable("url", "https://github.com/Javen205/IJPay");
             String emailContent = templateEngine.process("emailTemp", context);
-            mailService.sendHtmlMail("xxx@126.com", "这是模板邮件", emailContent);
+            mailService.sendHtmlMail("857446812@qq.com", "这是模板邮件", emailContent);
             return ResultUtil.success("邮件发送成功");
-        }catch (Exception ex){
+        } catch (Exception ex){
             ex.printStackTrace();
             return ResultUtil.error("邮件发送失败");
         }
