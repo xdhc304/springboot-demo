@@ -1,10 +1,7 @@
 package com.xdhc.demo.web.interceptor;
 
 import com.github.pagehelper.util.StringUtil;
-import com.rabbitmq.http.client.domain.UserInfo;
-import com.xdhc.demo.entity.Result;
 import com.xdhc.demo.entity.User;
-import com.xdhc.demo.util.JSONUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;

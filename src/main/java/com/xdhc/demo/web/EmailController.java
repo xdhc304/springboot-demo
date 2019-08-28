@@ -84,7 +84,7 @@ public class EmailController {
     @RequestMapping(value = "/htmlEmail", method = RequestMethod.GET)
     public Result<Map<String, Object>> htmlEmail(){
         try {
-            mailService.sendHtmlMail("\"857446812@qq.com","IJPay让支付触手可及","<body style=\"text-align: center;margin-left: auto;margin-right: auto;\">\n"
+            mailService.sendHtmlMail("1605668795@qq.com","IJPay让支付触手可及","<body style=\"text-align: center;margin-left: auto;margin-right: auto;\">\n"
                 + "	<div id=\"welcome\" style=\"text-align: center;position: absolute;\" >\n"
                 + "		<h3>欢迎使用IJPay -By Javen</h3>\n"
                 + "		<span>https://github.com/Javen205/IJPay</span>"
