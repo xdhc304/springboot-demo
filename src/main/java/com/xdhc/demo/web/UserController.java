@@ -31,9 +31,12 @@ public class UserController {
      */
     @PostMapping(value = "/regist")
     public Result<Map<String, Object>> regist(User user) throws JsonParseException, JsonMappingException, IOException {
-        Map<String, Object> modelMap = new HashMap<String, Object>();
-        modelMap.put("success", userService.regist(user));
-        return ResultUtil.success(modelMap);
+        boolean result = userService.regist(user);
+        if (result) {
+            return ResultUtil.success("注册成功");
+        } else {
+            return ResultUtil.error("注册失败");
+        }
     }
 
     /**
@@ -44,8 +47,12 @@ public class UserController {
     @PostMapping(value = "/login")
     public Result<Map<String, Object>> login(User user){
         User userObj = userService.login(user);
-        logger.info("user", userObj);
-        return ResultUtil.success("登录成功");
+        logger.info("user", userObj.toString());
+        if (userObj == null) {
+            return ResultUtil.error("登录失败");
+        } else {
+            return ResultUtil.success("登录成功");
+        }
     }
 
 }

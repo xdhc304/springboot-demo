@@ -1,17 +1,22 @@
 package com.xdhc.demo.web.interceptor;
 
+import com.github.pagehelper.util.StringUtil;
+import com.rabbitmq.http.client.domain.UserInfo;
 import com.xdhc.demo.entity.Result;
+import com.xdhc.demo.entity.User;
 import com.xdhc.demo.util.JSONUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import javax.servlet.http.HttpSession;
 
 public class Interceptor implements HandlerInterceptor {
+
+    private static final Logger logger  =  LoggerFactory.getLogger(Interceptor.class);
 
     /**
      * 在请求处理之前进行调用（Controller方法调用之前）
@@ -21,13 +26,25 @@ public class Interceptor implements HandlerInterceptor {
                              Object object) throws Exception {
 
         System.out.println("被Interceptor拦截");
-        return true;
+        // return true;
 
-		/*if (true) {
-			returnErrorResponse(response, IMoocJSONResult.errorMsg("被Interceptor拦截"));
-		}
+        String token = request.getHeader("ACCESS_TOKEN");
+        logger.info("token: " + token);
+        if (StringUtil.isEmpty(token)) {
+            throw new RuntimeException("未登录");
+        }
 
-		return false;*/
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            throw new RuntimeException("无权限请先登录");
+//            request.setAttribute("msg","无权限请先登录");
+//            request.getRequestDispatcher("/index.html").forward(request, response);
+//            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -53,20 +70,5 @@ public class Interceptor implements HandlerInterceptor {
 
     }
 
-    public void returnErrorResponse(HttpServletResponse response, Result result)
-            throws IOException, UnsupportedEncodingException {
-        OutputStream out=null;
-        try{
-            response.setCharacterEncoding("utf-8");
-            response.setContentType("text/json");
-            out = response.getOutputStream();
-            out.write(JSONUtil.beanToString(result).getBytes("utf-8"));
-            out.flush();
-        } finally{
-            if(out!=null){
-                out.close();
-            }
-        }
-    }
 }
 

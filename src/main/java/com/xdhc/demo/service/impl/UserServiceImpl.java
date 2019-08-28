@@ -22,15 +22,14 @@ public class UserServiceImpl implements UserService {
 	public boolean regist(User user) {
 		// 空值判断，主要是判断userName不为空
 		if (user.getUserName() != null && !"".equals(user.getUserName()) && user.getPassword() != null && !"".equals(user.getPassword())) {
-			// 设置默认值
-			user.setCreateTime(new Date());
-			user.setLastEditTime(new Date());
 			try {
 				User existUser = userDao.getUserByName(user.getUserName());
 				if(existUser != null){
 					//如果用户名已存在
 					throw new RuntimeException("用户名已存在");
 				} else {
+                    user.setCreateTime(new Date());
+                    user.setLastEditTime(new Date());
 					int effectedNum = userDao.regist(user);
 					if (effectedNum > 0) {
 						return true;

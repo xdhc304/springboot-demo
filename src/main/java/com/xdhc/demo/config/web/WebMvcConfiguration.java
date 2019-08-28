@@ -18,6 +18,9 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
         registry.addInterceptor(new Interceptor()).addPathPatterns("/area/**"); // /*/**
 
+//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                .excludePathPatterns("/index.html", "/", "/user/login");
+
         super.addInterceptors(registry);
     }
 }
