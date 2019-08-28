@@ -35,14 +35,14 @@ public class UserServiceImpl implements UserService {
 					if (effectedNum > 0) {
 						return true;
 					} else {
-						throw new RuntimeException("注册失败!");
+						throw new RuntimeException("注册失败");
 					}
 				}
 			} catch (Exception e) {
 				throw new RuntimeException("注册失败:" + e.toString());
 			}
 		} else {
-			throw new RuntimeException("注册信息不完整！");
+			throw new RuntimeException("注册信息不完整");
 		}
 	}
 	/**
@@ -53,9 +53,14 @@ public class UserServiceImpl implements UserService {
 	public User login(User user) {
 		// 空值判断，主要是判断userName不为空
 		if (user.getUserName() != null && !"".equals(user.getUserName()) && user.getPassword() != null && !"".equals(user.getPassword())) {
-			return userDao.login(user);
+			User UserObj = userDao.login(user);
+			if (UserObj == null) {
+				throw new RuntimeException("用户名或密码错误");
+			} else {
+				return userDao.login(user);
+			}
 		} else {
-			throw new RuntimeException("登录信息不完整！");
+			throw new RuntimeException("登录信息不完整");
 		}
 	}
 	/**
