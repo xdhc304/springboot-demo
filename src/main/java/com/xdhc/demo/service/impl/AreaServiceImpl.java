@@ -40,13 +40,13 @@ public class AreaServiceImpl implements AreaService {
 				if (effectedNum > 0) {
 					return true;
 				} else {
-					throw new RuntimeException("添加区域信息失败!");
+					throw new RuntimeException("添加区域信息失败");
 				}
 			} catch (Exception e) {
 				throw new RuntimeException("添加区域信息失败:" + e.toString());
 			}
 		} else {
-			throw new RuntimeException("区域信息不能为空！");
+			throw new RuntimeException("区域信息不能为空");
 		}
 	}
 
@@ -63,13 +63,13 @@ public class AreaServiceImpl implements AreaService {
 				if (effectedNum > 0) {
 					return true;
 				} else {
-					throw new RuntimeException("更新区域信息失败!");
+					throw new RuntimeException("更新区域信息失败");
 				}
 			} catch (Exception e) {
 				throw new RuntimeException("更新区域信息失败:" + e.toString());
 			}
 		} else {
-			throw new RuntimeException("区域信息不能为空！");
+			throw new RuntimeException("区域信息不能为空");
 		}
 	}
 
@@ -83,13 +83,13 @@ public class AreaServiceImpl implements AreaService {
 				if (effectedNum > 0) {
 					return true;
 				} else {
-					throw new RuntimeException("删除区域信息失败!");
+					throw new RuntimeException("删除区域信息失败");
 				}
 			} catch (Exception e) {
 				throw new RuntimeException("删除区域信息失败:" + e.toString());
 			}
 		} else {
-			throw new RuntimeException("区域Id不能为空！");
+			throw new RuntimeException("区域Id不能为空");
 		}
 	}
 }
