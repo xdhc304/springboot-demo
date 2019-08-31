@@ -23,6 +23,7 @@ public class ResultUtil {
 
     public static Result success() {
         Result result = new Result();
+        result.setCode(0);
         result.setSuccess(true);
         return result;
     }
