@@ -71,13 +71,13 @@ public class BlogServiceImpl implements BlogService {
 				if (effectedNum > 0) {
 					return true;
 				} else {
-					throw new RuntimeException("更新博客信息失败!");
+					throw new RuntimeException("更新博客信息失败");
 				}
 			} catch (Exception e) {
 				throw new RuntimeException("更新博客信息失败:" + e.toString());
 			}
 		} else {
-			throw new RuntimeException("博客信息不能为空！");
+			throw new RuntimeException("博客信息不能为空");
 		}
 	}
 
@@ -91,13 +91,13 @@ public class BlogServiceImpl implements BlogService {
 				if (effectedNum > 0) {
 					return true;
 				} else {
-					throw new RuntimeException("删除博客信息失败!");
+					throw new RuntimeException("删除博客信息失败");
 				}
 			} catch (Exception e) {
-				throw new RuntimeException("删除博客域信息失败:" + e.toString());
+				throw new RuntimeException("删除博客信息失败:" + e.toString());
 			}
 		} else {
-			throw new RuntimeException("博客Id不能为空！");
+			throw new RuntimeException("博客Id不能为空");
 		}
 	}
 }

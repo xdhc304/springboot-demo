@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
 		modelMap.put("success", false);
 		modelMap.put("code", -1);
 		modelMap.put("message", e.getMessage());
-		modelMap.put("url", req.getRequestURL());
+//		modelMap.put("url", req.getRequestURL());
 		return modelMap;
 	}
 
