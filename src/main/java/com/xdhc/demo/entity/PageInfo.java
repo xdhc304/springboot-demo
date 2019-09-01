@@ -10,6 +10,7 @@ import java.util.List;
  * @描叙： 分页 数据结构
  */
 public class PageInfo<T> implements Serializable {
+
     private static final long serialVersionUID = 1L;
     //当前页
     private int pageNum;

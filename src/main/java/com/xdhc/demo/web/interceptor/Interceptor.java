@@ -1,7 +1,7 @@
 package com.xdhc.demo.web.interceptor;
 
 import com.github.pagehelper.util.StringUtil;
-import com.xdhc.demo.entity.User;
+import com.xdhc.demo.entity.UserDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,7 +23,7 @@ public class Interceptor implements HandlerInterceptor {
                              Object object) throws Exception {
 
         System.out.println("被Interceptor拦截");
-        // return true;
+//        return true;
 
         String token = request.getHeader("ACCESS_TOKEN");
         logger.info("token: " + token);
@@ -32,7 +32,7 @@ public class Interceptor implements HandlerInterceptor {
         }
 
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        UserDO user = (UserDO) session.getAttribute("LOGIN_USER");
 
         if (user == null) {
             throw new RuntimeException("无权限请先登录");

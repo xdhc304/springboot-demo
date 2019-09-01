@@ -37,60 +37,55 @@
 	    <!--selectByExampleQueryId="false"-->
 	    <!--这些属性是为了使得只生成简单查询的对应文件，去掉复杂查询的生成文件，因为一般开发中不太用的到-->
 
-		<table tableName="user_info" domainObjectName="UserDO"
-			enableCountByExample="false"
-			enableUpdateByExample="false"
-			enableDeleteByExample="false"
-			enableSelectByExample="false"
-			selectByExampleQueryId="false">
-		</table>
-		<table tableName="user_password" domainObjectName="UserPasswordDO"
-		    enableCountByExample="false"
-		    enableUpdateByExample="false"
-		    enableDeleteByExample="false"
-		    enableSelectByExample="false"
-		    selectByExampleQueryId="false">
-		</table>
-		<table tableName="item" domainObjectName="ItemDO"
-		    enableCountByExample="false"
-		    enableUpdateByExample="false"
-		    enableDeleteByExample="false"
-		    enableSelectByExample="false"
-		    selectByExampleQueryId="false">
-		</table>
-		<table tableName="item_stock" domainObjectName="ItemStockDO"
-		    enableCountByExample="false"
-		    enableUpdateByExample="false"
-		    enableDeleteByExample="false"
-		    enableSelectByExample="false"
-		    selectByExampleQueryId="false">
-		</table>
-
-
-		<!--
-                <table tableName="order_info" domainObjectName="OrderDO"
-                       enableCountByExample="false"
-                       enableUpdateByExample="false"
-                       enableDeleteByExample="false"
-                       enableSelectByExample="false"
-                       selectByExampleQueryId="false" ></table>
-        -->
-
-		<!--
-                <table tableName="sequence_info" domainObjectName="SequenceDO"
-                       enableCountByExample="false"
-                       enableUpdateByExample="false"
-                       enableDeleteByExample="false"
-                       enableSelectByExample="false"
-                       selectByExampleQueryId="false" ></table>
-        -->
-
+		<!--<table tableName="user_info" domainObjectName="UserDO"-->
+			<!--enableCountByExample="false"-->
+			<!--enableUpdateByExample="false"-->
+			<!--enableDeleteByExample="false"-->
+			<!--enableSelectByExample="false"-->
+			<!--selectByExampleQueryId="false">-->
+		<!--</table>-->
+		<!--<table tableName="user_password" domainObjectName="UserPasswordDO"-->
+		    <!--enableCountByExample="false"-->
+		    <!--enableUpdateByExample="false"-->
+		    <!--enableDeleteByExample="false"-->
+		    <!--enableSelectByExample="false"-->
+		    <!--selectByExampleQueryId="false">-->
+		<!--</table>-->
+		<!--<table tableName="item" domainObjectName="ItemDO"-->
+		    <!--enableCountByExample="false"-->
+		    <!--enableUpdateByExample="false"-->
+		    <!--enableDeleteByExample="false"-->
+		    <!--enableSelectByExample="false"-->
+		    <!--selectByExampleQueryId="false">-->
+		<!--</table>-->
+		<!--<table tableName="item_stock" domainObjectName="ItemStockDO"-->
+		    <!--enableCountByExample="false"-->
+		    <!--enableUpdateByExample="false"-->
+		    <!--enableDeleteByExample="false"-->
+		    <!--enableSelectByExample="false"-->
+		    <!--selectByExampleQueryId="false">-->
+		<!--</table>-->
+		<!--<table tableName="order_info" domainObjectName="OrderDO"-->
+		    <!--enableCountByExample="false"-->
+		    <!--enableUpdateByExample="false"-->
+		    <!--enableDeleteByExample="false"-->
+		    <!--enableSelectByExample="false"-->
+		    <!--selectByExampleQueryId="false" >-->
+		<!--</table>-->
+		<!--<table tableName="sequence_info" domainObjectName="SequenceDO"-->
+		    <!--enableCountByExample="false"-->
+		    <!--enableUpdateByExample="false"-->
+		    <!--enableDeleteByExample="false"-->
+		    <!--enableSelectByExample="false"-->
+		    <!--selectByExampleQueryId="false" >-->
+		<!--</table>-->
 		<!--<table tableName="promo" domainObjectName="PromoDO"-->
-			   <!--enableCountByExample="false"-->
-			   <!--enableUpdateByExample="false"-->
-			   <!--enableDeleteByExample="false"-->
-			   <!--enableSelectByExample="false"-->
-			   <!--selectByExampleQueryId="false" ></table>-->
+		    <!--enableCountByExample="false"-->
+		    <!--enableUpdateByExample="false"-->
+		    <!--enableDeleteByExample="false"-->
+		    <!--enableSelectByExample="false"-->
+		    <!--selectByExampleQueryId="false" >-->
+		<!--</table>-->
 
 	</context>
 </generatorConfiguration>

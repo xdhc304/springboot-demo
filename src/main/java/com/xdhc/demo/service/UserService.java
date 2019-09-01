@@ -2,8 +2,10 @@ package com.xdhc.demo.service;
 
 import com.xdhc.demo.service.model.UserModel;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(rollbackFor = RuntimeException.class)
 public interface UserService {
 
     UserModel getUserById(Integer id);

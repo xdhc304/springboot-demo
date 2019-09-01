@@ -101,6 +101,11 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.2.4.Final</version>
 		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.1</version>
+		</dependency>
         <!-- 引入 thymeleaf 模板依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -146,7 +151,7 @@
 				</executions>
 				<configuration>
 					<!--允许移动生成的文件-->
-					<verborse>true</verborse>
+					<verbose>true</verbose>
 					<!--允许自动覆盖文件-->
 					<overwrite>false</overwrite>
 					<configurationFile>
