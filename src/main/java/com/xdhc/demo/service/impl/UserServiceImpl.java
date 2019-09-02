@@ -6,8 +6,8 @@ import com.xdhc.demo.entity.UserDO;
 import com.xdhc.demo.entity.UserPasswordDO;
 import com.xdhc.demo.service.UserService;
 import com.xdhc.demo.service.model.UserModel;
-import com.xdhc.demo.util.ValidationResult;
-import com.xdhc.demo.util.ValidatorImpl;
+import com.xdhc.demo.entity.Validation;
+import com.xdhc.demo.util.ValidatorUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     private UserPasswordDOMapper userPasswordDOMapper;
 
     @Autowired
-    private ValidatorImpl validator;
+    private ValidatorUtil validator;
 
     @Override
     public UserModel getUserById(Integer id) {
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 //            throw new BusinessException(EmBusinessError.PARAMETER_VALIDATION_ERROR);
 //        }
 
-        ValidationResult result = validator.validate(userModel);
+        Validation result = validator.validate(userModel);
         if (result.isHasErrors()) {
             throw new RuntimeException(result.getErrMsg());
         }

@@ -1,11 +1,11 @@
-package com.xdhc.demo.util;
+package com.xdhc.demo.entity;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValidationResult {
+public class Validation {
     //校验结果是否有错
     private boolean hasErrors = false;
 

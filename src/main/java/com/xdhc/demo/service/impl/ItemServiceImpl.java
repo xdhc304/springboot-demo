@@ -8,8 +8,8 @@ import com.xdhc.demo.service.ItemService;
 import com.xdhc.demo.service.PromoService;
 import com.xdhc.demo.service.model.ItemModel;
 import com.xdhc.demo.service.model.PromoModel;
-import com.xdhc.demo.util.ValidationResult;
-import com.xdhc.demo.util.ValidatorImpl;
+import com.xdhc.demo.entity.Validation;
+import com.xdhc.demo.util.ValidatorUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 public class ItemServiceImpl implements ItemService {
 
     @Autowired
-    private ValidatorImpl validator;
+    private ValidatorUtil validator;
 
     @Autowired
     private ItemDOMapper itemDOMapper;
@@ -38,7 +38,7 @@ public class ItemServiceImpl implements ItemService {
     public ItemModel createItem(ItemModel itemModel) {
 
         //校验入参
-        ValidationResult result = validator.validate(itemModel);
+        Validation result = validator.validate(itemModel);
         if (result.isHasErrors()) {
             throw new RuntimeException(result.getErrMsg());
         }
