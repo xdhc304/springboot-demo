@@ -2,8 +2,10 @@ package com.xdhc.demo.web.interceptor;
 
 import com.github.pagehelper.util.StringUtil;
 import com.xdhc.demo.entity.UserDO;
+import com.xdhc.demo.util.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class Interceptor implements HandlerInterceptor {
+
+    @Autowired
+    private HttpServletRequest httpServletRequest;
 
     private static final Logger logger  =  LoggerFactory.getLogger(Interceptor.class);
 
@@ -25,23 +30,13 @@ public class Interceptor implements HandlerInterceptor {
         System.out.println("被Interceptor拦截");
 //        return true;
 
-        String token = request.getHeader("ACCESS_TOKEN");
-        logger.info("token: " + token);
-        if (StringUtil.isEmpty(token)) {
-            throw new RuntimeException("未登录");
-        }
-
-        HttpSession session = request.getSession();
-        UserDO user = (UserDO) session.getAttribute("LOGIN_USER");
-
-        if (user == null) {
-            throw new RuntimeException("无权限请先登录");
-//            request.setAttribute("msg","无权限请先登录");
-//            request.getRequestDispatcher("/index.html").forward(request, response);
-//            return false;
+        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
+        if (isLogin == null || !isLogin.booleanValue()) {
+            throw new RuntimeException("用户还未登录，不能下单");
         } else {
             return true;
         }
+
     }
 
     /**
