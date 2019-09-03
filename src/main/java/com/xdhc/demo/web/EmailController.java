@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -58,6 +59,7 @@ public class EmailController {
             StringBuffer sb = new StringBuffer();
             sb.append("<h1>电子发票</h1>")
                     .append("<p style='color:#F00'>已到</p>")
+                    .append("<a href='http://localhost:8081/email/active?code=123456'>http://localhost:8081/email/active?code=123456</a>")
                     .append("<p style='text-align:right'>spring boot发送</p>");
             helper.setText(sb.toString(), true);
 //            FileSystemResource fileSystemResource = new FileSystemResource(new File("D:\76678.pdf"));
@@ -67,6 +69,16 @@ public class EmailController {
         } catch (MessagingException e) {
             e.printStackTrace();
             return ResultUtil.error("邮件发送失败");
+        }
+    }
+
+    @RequestMapping(value = "/active", method = RequestMethod.GET)
+    private Result<Map<String, Object>> codeEmail(@RequestParam(value = "code") String code) {
+        String checkCode = "123456";
+        if (checkCode == code) {
+            return ResultUtil.success("激活成功");
+        } else {
+            return ResultUtil.error("激活失败");
         }
     }
 
