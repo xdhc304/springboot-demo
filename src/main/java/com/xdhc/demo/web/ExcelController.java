@@ -1,6 +1,8 @@
 package com.xdhc.demo.web;
 
+import com.xdhc.demo.entity.Result;
 import com.xdhc.demo.service.ExcelService;
+import com.xdhc.demo.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +18,13 @@ public class ExcelController {
     ExcelService excelService;
 
     @RequestMapping(value = "/export", produces = {"application/vnd.ms-excel;charset=UTF-8"})
-    public String export(HttpServletResponse response, @RequestParam(value = "dataNum",required = false) Integer dataNum){
-        return excelService.export(response,dataNum);
+    public Result<String> export(HttpServletResponse response, @RequestParam(defaultValue = "1", value = "dataNum") Integer dataNum){
+        try {
+            excelService.export(response, dataNum);
+            return ResultUtil.error("下载成功");
+        } catch (Exception ex){
+            ex.printStackTrace();
+            return ResultUtil.error("下载失败");
+        }
     }
 }
