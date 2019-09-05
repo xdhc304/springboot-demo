@@ -106,6 +106,12 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.9.1</version>
 		</dependency>
+		<!-- poi 导出 -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+		</dependency>
         <!-- 引入 thymeleaf 模板依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
