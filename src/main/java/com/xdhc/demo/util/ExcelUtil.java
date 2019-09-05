@@ -142,7 +142,7 @@ public class ExcelUtil {
      * @param dataNumber
      * @return
      */
-    public static List<Excel> generatorExcel(Integer dataNumber) {
+    public static List<Excel> mockExcel(Integer dataNumber) {
         if (dataNumber==0){ // 如果没有传入dataNumber 设置默认值为100
             dataNumber=100;
         }

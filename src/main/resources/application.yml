@@ -66,12 +66,12 @@ spring:
   #注意：在spring.mail.password处的值是需要在邮箱设置里面生成的授权码，这个不是真实的密码。
 
 # 配置日志
-logging:
-  level:
-    root: warn
-    com.xdhc.demo.dao: trace
-  pattern:
-    console: '%p%m%n'
+#logging:
+#  level:
+#    root: warn
+#    com.xdhc.demo.dao: trace
+#  pattern:
+#    console: '%p%m%n'
 
 redis:
   database: 0

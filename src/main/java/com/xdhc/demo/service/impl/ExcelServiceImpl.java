@@ -25,7 +25,7 @@ public class ExcelServiceImpl implements ExcelService {
     @Override
     public String export(HttpServletResponse response, int dataNum) {
         try {
-            List<Excel> listExcel = ExcelUtil.generatorExcel(dataNum);
+            List<Excel> listExcel = ExcelUtil.mockExcel(dataNum);
             String fileName="项目审核表";
             List<Map<String,Object>> list=createExcelRecord(listExcel);
             String columnNames[] = {"编号","名称","父节点名称","简称","级别","城市编码","区域编码"};//列名
