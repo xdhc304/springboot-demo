@@ -28,14 +28,14 @@ public class Interceptor implements HandlerInterceptor {
                              Object object) throws Exception {
 
         System.out.println("被Interceptor拦截");
-//        return true;
+        return true;
 
-        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
-        if (isLogin == null || !isLogin.booleanValue()) {
-            throw new RuntimeException("用户还未登录，不能下单");
-        } else {
-            return true;
-        }
+//        Boolean isLogin = (Boolean) httpServletRequest.getSession().getAttribute("IS_LOGIN");
+//        if (isLogin == null || !isLogin.booleanValue()) {
+//            throw new RuntimeException("用户还未登录，不能下单");
+//        } else {
+//            return true;
+//        }
 
     }
 
